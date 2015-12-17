@@ -7,6 +7,7 @@
 #include "Unit1.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
+#pragma link "CSPIN"
 #pragma resource "*.dfm"
 TFormGuard *FormGuard;
 
@@ -49,6 +50,8 @@ FormGuard->edtMinYellow->Text = IntToStr(CG_PAP.guard.yellow_min);
 FormGuard->edtMinGreen->Text = IntToStr(CG_PAP.guard.green_min);
 // мин. КК
 FormGuard->edtKK->Text = IntToStr(CG_PAP.guard.kk_len);
+// time VPU
+FormGuard->edtTimeStDelayVPU->Value = CG_PAP.guard.TimeVPU;
 //заполнение
 FormGuard->cbbFilling->ItemIndex = CG_PAP.guard.green_fill;
 //пом такт
@@ -115,6 +118,8 @@ if(TryStrToInt(edtKK->Text, i_conv))
                 else Application->MessageBox(
                 AnsiString("параметр больше "+IntToStr(sizeof(CG_PAP.guard.kk_len)*0xFF)).c_str(), \
                 "Ошибка", MB_OK);
+// время включения ВПУ
+CG_PAP.guard.TimeVPU =  edtTimeStDelayVPU->Value;
 //
 CG_PAP.guard.green_fill = cbbFilling->ItemIndex;// заполнение красный\зеленый
 // для пром. тактов
@@ -244,3 +249,4 @@ if (ACol!=ARow)
                 }
 }
 //---------------------------------------------------------------------------
+

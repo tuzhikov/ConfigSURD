@@ -213,6 +213,8 @@ __published:	// IDE-managed Components
         TButton *btnRestart;
         TButton *btnMultiTime;
         TButton *btnSyncAllDk;
+        TPanel *pnlQuality;
+        TLabel *lblQuality;
         void __fastcall btnExitClick(TObject *Sender);
         void __fastcall btnLoadClick(TObject *Sender);
         void __fastcall FormCreate(TObject *Sender);

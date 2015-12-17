@@ -12,6 +12,7 @@
 #include <Grids.hpp>
 #include <ToolWin.hpp>
 #include "structures.h"
+#include "CSPIN.h"
 //---------------------------------------------------------------------------
 class TFormGuard : public TForm
 {
@@ -32,7 +33,6 @@ __published:	// IDE-managed Components
         TLabel *Label6;
         TLabel *Label7;
         TLabel *Label8;
-        TLabel *Label9;
         TLabel *Label18;
         TLabel *Label19;
         TLabel *Label4;
@@ -42,7 +42,6 @@ __published:	// IDE-managed Components
         TEdit *edtMinYellow;
         TEdit *Edit4;
         TEdit *edtMinGreen;
-        TEdit *edtMaxTimeManual;
         TEdit *edtTimeClear;
         TComboBox *cbbFilling;
         TPanel *pnl1;
@@ -61,6 +60,8 @@ __published:	// IDE-managed Components
         TLabel *lbl2;
         TLabel *lbl3;
         TBevel *bvl1;
+        TBevel *bvl2;
+        TCSpinEdit *edtTimeStDelayVPU;
         void __fastcall btnSaveClick(TObject *Sender);
         void __fastcall btnCloseClick(TObject *Sender);
         void __fastcall StringGrid1SetEditText(TObject *Sender, int ACol,

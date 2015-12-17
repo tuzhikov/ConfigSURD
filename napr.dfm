@@ -1,6 +1,6 @@
 object frmDirection: TfrmDirection
-  Left = 239
-  Top = -1
+  Left = 234
+  Top = 64
   Width = 1202
   Height = 812
   Caption = #1053#1072#1087#1088#1072#1074#1083#1077#1085#1080#1103

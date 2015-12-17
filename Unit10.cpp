@@ -35,11 +35,11 @@ TFormDk *FormDk;
   //
   map<AnsiString,AnsiString> STATE_PAR;
 
-  #define  PARAMS_N     20
+  /*#define  PARAMS_N     20
   // названия параметров и их значения
   AnsiString state_params[PARAMS_N]={"PROGRAM=","PROG_FAZA=","SINGLE_FAZA=",
         "LEVEL=", "SPEC_PROG=", "RED=", "YEL=", "GREEN="};
-  AnsiString  state_znach[PARAMS_N];
+  AnsiString  state_znach[PARAMS_N];*/
   //
   int was_read=0;
   int jor_size=0;
@@ -124,10 +124,10 @@ Undo_SURD_OFF();
 }
 //---------------------------------------------------------------------------
 //
-void Clear_Parsers()
+/*void Clear_Parsers()
 {
 for(int i_sp=0; i_sp<PARAMS_N; i_sp++)state_znach[i_sp]="";
-}
+}*/
 //------------------------------------------------------------------------------
 void Parse_Answer(AnsiString s, AnsiString sep)
 {
@@ -219,6 +219,7 @@ FormDk->pnlStat->Caption = "";
 FormDk->pnlsource->Caption = "";
 FormDk->pnlTime->Caption = "";
 FormDk->pnlnet->Caption = "";
+FormDk->pnlQuality->Caption = "";
 //
 s = STATE_PAR["WORK"];
 //
@@ -271,6 +272,9 @@ s = STATE_PAR["NET"];
 if (s=="OK")  ss = "Все ДК в сети";
 if (s=="NO")  ss = "ДК не в сети";
 FormDk->pnlnet->Caption = ss;
+// качество связи
+s = STATE_PAR["QUAL"];
+FormDk->pnlQuality->Caption = "Потерь-"+s+"%";
 // фремя окончания фазы или пром. такта
 ss="";
 //s = STATE_PAR["LEVEL"];
@@ -1076,7 +1080,7 @@ bool send_succ;
 //
 FormDk->Timer1->Enabled  =false;
 //
-Clear_Parsers();
+//Clear_Parsers();
 STATE_PAR.clear();
 //
 s = "get state " + IntToStr(curr_ring);
@@ -1769,9 +1773,10 @@ void TFormDk::sendMultiCommand(AnsiString cmd)
 AnsiString out = "Выполнено успешно";
 std::vector<AnsiString> answerErrDK;
 bool send_succ;
-int const MaxDk = pDateIp->getCountIp();// max. IP
+int MaxDk = pDateIp->getCountIp();// max. IP
 
-for(int i=0;i<MaxDk;i++)
+// сбрасываем всех, потом только мастера
+for(int i=(MaxDk-1);i>=0;i--)
         {
         const AnsiString ip = pDateIp->getOneIp(i);
         const int port = pDateIp->getPort();

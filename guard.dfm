@@ -165,29 +165,20 @@ object FormGuard: TFormGuard
         object Label8: TLabel
           Left = 18
           Top = 13
-          Width = 165
+          Width = 168
           Height = 16
-          Caption = #1052#1080#1085'. '#1074#1088#1077#1084#1103' '#1092#1072#1079#1099', '#1089#1077#1082'.'
-        end
-        object Label9: TLabel
-          Left = 296
-          Top = 336
-          Width = 172
-          Height = 16
-          Caption = #1079#1077#1083#1077#1085#1086#1075#1086' '#1089#1080#1075#1085#1072#1083#1072', '#1089#1077#1082'.'
-          Visible = False
+          Caption = #1052#1080#1085'. '#1074#1088#1077#1084#1103' '#1092#1072#1079#1099', '#1084#1080#1085'.'
         end
         object Label18: TLabel
           Left = 16
-          Top = 296
+          Top = 205
           Width = 191
           Height = 16
           Caption = #1088#1091#1095#1085#1086#1075#1086' '#1091#1087#1088#1072#1074#1083#1077#1085#1080#1103' '#1084#1080#1085'.'
-          Visible = False
         end
         object Label19: TLabel
-          Left = 16
-          Top = 342
+          Left = 312
+          Top = 318
           Width = 232
           Height = 16
           Caption = #1048#1085#1090#1077#1088#1074#1072#1083' '#1086#1095#1080#1089#1090#1082#1080' '#1087#1086#1083#1086#1089#1099' '#1084#1080#1085'.'
@@ -203,11 +194,10 @@ object FormGuard: TFormGuard
         end
         object Label5: TLabel
           Left = 16
-          Top = 280
+          Top = 189
           Width = 216
           Height = 16
           Caption = #1052#1072#1082#1089#1080#1084#1072#1083#1100#1085#1072#1103' '#1076#1083#1080#1090#1077#1083#1100#1085#1086#1089#1090#1100
-          Visible = False
         end
         object lbl1: TLabel
           Left = 355
@@ -226,7 +216,7 @@ object FormGuard: TFormGuard
         object lbl3: TLabel
           Left = 17
           Top = 90
-          Width = 113
+          Width = 112
           Height = 16
           Caption = #1088#1077#1078#1080#1084#1072' '#1050#1050' '#1089#1077#1082'.'
         end
@@ -235,6 +225,12 @@ object FormGuard: TFormGuard
           Top = 20
           Width = 3
           Height = 380
+        end
+        object bvl2: TBevel
+          Left = 8
+          Top = 180
+          Width = 241
+          Height = 3
         end
         object edtMinRed: TEdit
           Left = 312
@@ -271,21 +267,12 @@ object FormGuard: TFormGuard
           TabOrder = 3
           Text = '5'
         end
-        object edtMaxTimeManual: TEdit
-          Left = 16
-          Top = 312
+        object edtTimeClear: TEdit
+          Left = 312
+          Top = 342
           Width = 121
           Height = 24
           TabOrder = 4
-          Text = '5'
-          Visible = False
-        end
-        object edtTimeClear: TEdit
-          Left = 16
-          Top = 366
-          Width = 121
-          Height = 24
-          TabOrder = 5
           Text = '5'
           Visible = False
         end
@@ -296,7 +283,7 @@ object FormGuard: TFormGuard
           Height = 24
           ItemHeight = 16
           ItemIndex = 0
-          TabOrder = 6
+          TabOrder = 5
           Text = #1050#1088#1072#1089#1085#1099#1081
           Items.Strings = (
             #1050#1088#1072#1089#1085#1099#1081
@@ -310,7 +297,7 @@ object FormGuard: TFormGuard
           BevelOuter = bvSpace
           BiDiMode = bdLeftToRight
           ParentBiDiMode = False
-          TabOrder = 7
+          TabOrder = 6
           object lbl4: TLabel
             Left = 35
             Top = 5
@@ -348,11 +335,19 @@ object FormGuard: TFormGuard
         end
         object edtKK: TEdit
           Left = 40
-          Top = 119
+          Top = 121
           Width = 121
           Height = 24
-          TabOrder = 8
+          TabOrder = 7
           Text = '1'
+        end
+        object edtTimeStDelayVPU: TCSpinEdit
+          Left = 40
+          Top = 240
+          Width = 121
+          Height = 26
+          MaxValue = 1440
+          TabOrder = 8
         end
       end
     end

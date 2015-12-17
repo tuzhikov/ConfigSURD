@@ -1,6 +1,6 @@
 object FormDk: TFormDk
-  Left = 415
-  Top = 174
+  Left = 432
+  Top = 193
   BorderStyle = bsSingle
   Caption = #1044#1050' '#1074' '#1075#1088#1091#1087#1087#1077'.'
   ClientHeight = 581
@@ -58,7 +58,7 @@ object FormDk: TFormDk
     Top = 105
     Width = 871
     Height = 435
-    ActivePage = TabSheet6
+    ActivePage = TabSheet1
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -68,7 +68,7 @@ object FormDk: TFormDk
     ParentFont = False
     Style = tsFlatButtons
     TabHeight = 50
-    TabIndex = 5
+    TabIndex = 0
     TabOrder = 1
     object TabSheet1: TTabSheet
       Caption = #1057#1086#1089#1090#1086#1103#1085#1080#1077
@@ -121,8 +121,8 @@ object FormDk: TFormDk
           Caption = #1057#1090#1072#1090#1091#1089' '#1057#1059#1056#1044':'
         end
         object Label3: TLabel
-          Left = 12
-          Top = 174
+          Left = 6
+          Top = 214
           Width = 113
           Height = 20
           Caption = #1053#1086#1084#1077#1088' '#1092#1072#1079#1099':'
@@ -135,15 +135,15 @@ object FormDk: TFormDk
           Caption = #1057#1086#1089#1090#1086#1103#1085#1080#1077' '#1044#1050':'
         end
         object Label17: TLabel
-          Left = 25
-          Top = 254
+          Left = 21
+          Top = 294
           Width = 86
           Height = 20
           Caption = #1048#1089#1090#1086#1095#1085#1080#1082':'
         end
         object lblTime: TLabel
           Left = 12
-          Top = 216
+          Top = 256
           Width = 112
           Height = 20
           Caption = #1042#1088#1077#1084#1103' '#1092#1072#1079#1099':'
@@ -154,6 +154,13 @@ object FormDk: TFormDk
           Width = 118
           Height = 20
           Caption = #1057#1090#1072#1090#1091#1089' '#1089#1074#1103#1079#1080':'
+        end
+        object lblQuality: TLabel
+          Left = 21
+          Top = 173
+          Width = 86
+          Height = 20
+          Caption = #1050#1072#1095#1077#1089#1090#1074#1086':'
         end
         object pnlmodesurd: TPanel
           Left = 136
@@ -171,7 +178,7 @@ object FormDk: TFormDk
         end
         object pnlphase: TPanel
           Left = 136
-          Top = 168
+          Top = 208
           Width = 220
           Height = 33
           TabOrder = 2
@@ -185,14 +192,14 @@ object FormDk: TFormDk
         end
         object pnlsource: TPanel
           Left = 136
-          Top = 249
+          Top = 289
           Width = 220
           Height = 31
           TabOrder = 4
         end
         object pnlTime: TPanel
           Left = 136
-          Top = 210
+          Top = 250
           Width = 220
           Height = 33
           TabOrder = 5
@@ -203,6 +210,13 @@ object FormDk: TFormDk
           Width = 220
           Height = 33
           TabOrder = 6
+        end
+        object pnlQuality: TPanel
+          Left = 136
+          Top = 168
+          Width = 220
+          Height = 33
+          TabOrder = 7
         end
       end
       object ToolBar1: TToolBar

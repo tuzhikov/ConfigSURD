@@ -179,6 +179,7 @@ if(FormMain->OpenDialog1->Execute()){
         buf_read = buffData;
         int bytes_in=fread(buffData,1,sizeof(buffData),in_file);
         if(bytes_in<(sizeof(TPROJECT)+sizeof(TPROGRAMS))*N_DK){
+                MessageDlg("Ошибка файла проекта!",mtError,TMsgDlgButtons() << mbYes,0);
                 return; // ошибка по длине
                 }
         pbuffData = buffData;
@@ -359,6 +360,7 @@ PAP.guard.green_min=5;
 PAP.guard.green_yellow=5;
 PAP.guard.yellow_min=5;
 PAP.guard.kk_len = 5;
+PAP.guard.TimeVPU = 0;
 PAP.guard.faza_max=1440;
         PAP.guard.yellow=0;
         PAP.guard.redyellow=0;

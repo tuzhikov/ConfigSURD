@@ -708,6 +708,7 @@ memcpy(&PAP.Directs, &tempPrg.Directs, sizeof(PAP.Directs));
 PAP.AmountDirects = tempPrg.AmountDirects;
 FormMain->retDPA()->Paint();// рисуем ленту времени
 FormMain->retVIS()->is_edit=true;
+const BYTE group =  PAP.Directs.OneDirect[0].out.red[0].group;
 }
 /*----------------------------------------------------------------------------*/
  // обработчик для comboBox Port общий
@@ -799,8 +800,6 @@ visDirectionGreen.clear();
 bool TfrmDirection::setParametrOneDirectoin(const int currentDirection)
 {
 if(currentDirection>tempPrg.AmountDirects)return false; // нет в проекте такого направления
-
-
 // сохраняем текущее направление в временную структуру
 // red
 const int maxDkR = visDirectionRed.size();
@@ -927,33 +926,70 @@ return true;
 // проерить конфликты по свем направлениям
 bool TfrmDirection::checkOneSructParametr(const WORD Group,const WORD Color,const WORD Dk)
 {
+// проверить конфликты по всем направлениям
 for(int In=0;In<tempPrg.AmountDirects;In++)
         {
         for(int i=0;i<visDirectionRed.size();i++)// проверяем все формы их  не должно быть больше 32
                 {
                 //red
-                if(tempPrg.Directs.OneDirect[In].out.red[i].NumberDk==Dk){
-                        if(tempPrg.Directs.OneDirect[In].out.red[i].group==0)continue;
+                if(tempPrg.Directs.OneDirect[In].out.red[i].group==0)continue; // уходим без проверки
+                else if(tempPrg.Directs.OneDirect[In].out.red[i].NumberDk==Dk){
                         if(tempPrg.Directs.OneDirect[In].out.red[i].group==Group){
                                 if(tempPrg.Directs.OneDirect[In].out.red[i].color==Color)
                                         return false;
                                 }
                         }
                 //yellow
-                if(tempPrg.Directs.OneDirect[In].out.yel[i].NumberDk==Dk){
-                        if(tempPrg.Directs.OneDirect[In].out.yel[i].group==0)continue;
+                if(tempPrg.Directs.OneDirect[In].out.yel[i].group==0)continue; // уходим без проверки
+                else if(tempPrg.Directs.OneDirect[In].out.yel[i].NumberDk==Dk){
                         if(tempPrg.Directs.OneDirect[In].out.yel[i].group==Group){
                                 if(tempPrg.Directs.OneDirect[In].out.yel[i].color==Color)
                                         return false;
                                 }
                         }
                 //green
-                if(tempPrg.Directs.OneDirect[In].out.green[i].NumberDk==Dk){
-                        if(tempPrg.Directs.OneDirect[In].out.green[i].group==0)continue;
+                if(tempPrg.Directs.OneDirect[In].out.green[i].group==0)continue;// уходим без проверки
+                else if(tempPrg.Directs.OneDirect[In].out.green[i].NumberDk==Dk){
                         if(tempPrg.Directs.OneDirect[In].out.green[i].group==Group){
                                 if(tempPrg.Directs.OneDirect[In].out.green[i].color==Color)
                                         return false;
                                 }
+                        }
+                }
+        }
+
+return true;
+}
+// проверка конфликтов в одном направлении. "Одно направление одна ГРУППА К,Ж,З для одного ДК"
+bool TfrmDirection::checkOneSructureCurrentDirection(const WORD Dir,const WORD Color,const WORD Dk,const WORD Tag)
+{
+for(int i=0;i<visDirectionRed.size();i++)// не более 32 вкладок
+        {
+        //red
+        if(tempPrg.Directs.OneDirect[Dir].out.red[i].NumberDk==Dk){
+                if(tempPrg.Directs.OneDirect[Dir].out.red[i].color==Color){
+                        if(tempPrg.Directs.OneDirect[Dir].out.red[i].group!=0){
+                          if(Tag!=i){//tempPrg.Directs.OneDirect[Dir].out.red[i].group=0;
+                                return false;}
+                          }
+                        }
+                }
+        // yellow
+        if(tempPrg.Directs.OneDirect[Dir].out.yel[i].NumberDk==Dk){
+                if(tempPrg.Directs.OneDirect[Dir].out.yel[i].color==Color){
+                        if(tempPrg.Directs.OneDirect[Dir].out.yel[i].group!=0){
+                          if(Tag!=i){//tempPrg.Directs.OneDirect[Dir].out.yel[i].group = 0;
+                                return false;}
+                          }
+                        }
+                }
+        //green
+        if(tempPrg.Directs.OneDirect[Dir].out.green[i].NumberDk==Dk){
+                if(tempPrg.Directs.OneDirect[Dir].out.green[i].color==Color){
+                        if(tempPrg.Directs.OneDirect[Dir].out.green[i].group!=0){
+                          if(Tag!=i){//tempPrg.Directs.OneDirect[Dir].out.green[i].group=0;
+                                return false;}
+                          }
                         }
                 }
         }
@@ -987,7 +1023,9 @@ bool TfrmDirection::checkSructParametrDK(const TComboBox *cmb)
 const WORD Dk = cmb->ItemIndex;
 const WORD Color = getColor(cmb->Tag);
 const WORD Group = getGroup(cmb->Tag);
-return checkOneSructParametr(Group,Color,Dk);
+const bool retValue = checkOneSructureCurrentDirection(curDirect,Color,Dk,cmb->Tag)&
+                      checkOneSructParametr(Group,Color,Dk);
+return retValue;
 }
 // return false - есть конфликт проверяем Группу
 bool TfrmDirection::checkSructParametrGroup(const TComboBox *cmb)
@@ -995,7 +1033,9 @@ bool TfrmDirection::checkSructParametrGroup(const TComboBox *cmb)
 const WORD Group= cmb->ItemIndex;
 const WORD Color = getColor(cmb->Tag);
 const WORD Dk = getDk(cmb->Tag);
-return checkOneSructParametr(Group,Color,Dk);
+const bool retValue = checkOneSructureCurrentDirection(curDirect,Color,Dk,cmb->Tag)&
+                      checkOneSructParametr(Group,Color,Dk);
+return retValue;
 }
 // return false - есть конфликт проверяем цвет //BYTE col = visDirectionGreen[i],visDirectionYellow[i],visDirectionRed[i]
 bool TfrmDirection::checkSructParametrColor(const TComboBox *cmb)
@@ -1003,5 +1043,7 @@ bool TfrmDirection::checkSructParametrColor(const TComboBox *cmb)
 const WORD Color = cmb->ItemIndex;
 const WORD Group = getGroup(cmb->Tag);
 const WORD Dk = getDk(cmb->Tag);
-return checkOneSructParametr(Group,Color,Dk);
+const bool retValue = checkOneSructureCurrentDirection(curDirect,Color,Dk,cmb->Tag)&
+                      checkOneSructParametr(Group,Color,Dk);
+return retValue;
 }

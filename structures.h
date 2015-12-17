@@ -161,7 +161,7 @@ typedef struct _TNAPROUTALL
 typedef struct _TONEDIRECT
         {
         DIR_TYPE    Type; // тип направления
-        TNAPROUTALL out;  //
+        TNAPROUTALL out;  // только одна группа (К,Ж,З) на одно направление
 }TONEDIRECT;
 /*описываем все направления*/
 typedef struct _TDIRECTS
@@ -215,6 +215,7 @@ typedef struct _TGUARD{
         BYTE  restarts;         // кол-во попыток перезапуска
         BYTE  time_clear;       // время очистки аварий
         BYTE  kk_len;           //КК длительнсоть
+        BYTE  TimeVPU;          // мак. время включения ВПУ
         BYTE  gpsON;            // включение проверки GPS
 }TGUARD;
 ///////////////////////////////////////////////

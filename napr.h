@@ -476,6 +476,7 @@ private:	// User declarations
         int  getDk(const int tag);
         int  getGroup(const int tag);
         int  getColor(const int tag);
+        bool checkOneSructureCurrentDirection(const WORD Dir,const WORD Color,const WORD Dk,const WORD Tag);
         bool checkOneSructParametr(const WORD Group,const WORD Color,const WORD Dk);
         bool checkSructParametrDK(const TComboBox *cmb);
         bool checkSructParametrGroup(const TComboBox *cmb);
