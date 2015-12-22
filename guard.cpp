@@ -99,12 +99,13 @@ if(TryStrToInt(edtMinRed->Text, i_conv))
                 AnsiString("параметр больше"+IntToStr(sizeof(CG_PAP.guard.red_min)*0xFF)).c_str(),
                 "Ошибка", MB_OK);
                 */
+const __int64 MAX_GREEN = 2<<((sizeof(CG_PAP.guard.green_min)*8)-1);
 if(TryStrToInt(edtMinGreen->Text, i_conv))
-        if(i_conv<=sizeof(CG_PAP.guard.green_min)*0xFF)
+        if(i_conv<MAX_GREEN)
                 CG_PAP.guard.yellow_min = CG_PAP.guard.red_min = CG_PAP.guard.green_min = i_conv; // время мин. зеленый
                 else
                 Application->MessageBox(
-                        AnsiString("параметр больше"+IntToStr(sizeof(CG_PAP.guard.green_min)*0xFF)).c_str(),
+                        AnsiString("Параметр больше "+IntToStr(MAX_GREEN)).c_str(),
                         "Ошибка", MB_OK);
 /*
 if(TryStrToInt(edtMinYellow->Text, i_conv))
@@ -113,11 +114,12 @@ if(TryStrToInt(edtMinYellow->Text, i_conv))
                 AnsiString("параметр больше"+IntToStr(sizeof(CG_PAP.guard.yellow_min)*0xFF)).c_str(),
                 "Ошибка", MB_OK);
                 */
+const DWORD MAX_LENG_KK = 2<<((sizeof(CG_PAP.guard.kk_len)*8)-1);
 if(TryStrToInt(edtKK->Text, i_conv))
-        if(i_conv<=sizeof(CG_PAP.guard.kk_len)*0xFF)CG_PAP.guard.kk_len = i_conv;
+        if(i_conv<MAX_LENG_KK)CG_PAP.guard.kk_len = i_conv;
                 else Application->MessageBox(
-                AnsiString("параметр больше "+IntToStr(sizeof(CG_PAP.guard.kk_len)*0xFF)).c_str(), \
-                "Ошибка", MB_OK);
+                                AnsiString("Параметр больше "+IntToStr(MAX_LENG_KK)).c_str(),
+                                "Ошибка", MB_OK);
 // время включения ВПУ
 CG_PAP.guard.TimeVPU =  edtTimeStDelayVPU->Value;
 //

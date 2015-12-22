@@ -978,7 +978,7 @@ for(int i=0;i<visDirectionRed.size();i++)// не более 32 вкладок
         if(tempPrg.Directs.OneDirect[Dir].out.yel[i].NumberDk==Dk){
                 if(tempPrg.Directs.OneDirect[Dir].out.yel[i].color==Color){
                         if(tempPrg.Directs.OneDirect[Dir].out.yel[i].group!=0){
-                          if(Tag!=i){//tempPrg.Directs.OneDirect[Dir].out.yel[i].group = 0;
+                          if(Tag!=i+YEL_IN){//tempPrg.Directs.OneDirect[Dir].out.yel[i].group = 0;
                                 return false;}
                           }
                         }
@@ -987,7 +987,7 @@ for(int i=0;i<visDirectionRed.size();i++)// не более 32 вкладок
         if(tempPrg.Directs.OneDirect[Dir].out.green[i].NumberDk==Dk){
                 if(tempPrg.Directs.OneDirect[Dir].out.green[i].color==Color){
                         if(tempPrg.Directs.OneDirect[Dir].out.green[i].group!=0){
-                          if(Tag!=i){//tempPrg.Directs.OneDirect[Dir].out.green[i].group=0;
+                          if(Tag!=i+GREN_IN){//tempPrg.Directs.OneDirect[Dir].out.green[i].group=0;
                                 return false;}
                           }
                         }

@@ -165,9 +165,9 @@ object FormGuard: TFormGuard
         object Label8: TLabel
           Left = 18
           Top = 13
-          Width = 168
+          Width = 165
           Height = 16
-          Caption = #1052#1080#1085'. '#1074#1088#1077#1084#1103' '#1092#1072#1079#1099', '#1084#1080#1085'.'
+          Caption = #1052#1080#1085'. '#1074#1088#1077#1084#1103' '#1092#1072#1079#1099', '#1089#1077#1082'.'
         end
         object Label18: TLabel
           Left = 16

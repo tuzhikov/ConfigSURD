@@ -274,7 +274,7 @@ if (s=="NO")  ss = "ДК не в сети";
 FormDk->pnlnet->Caption = ss;
 // качество связи
 s = STATE_PAR["QUAL"];
-FormDk->pnlQuality->Caption = "Потерь-"+s+"%";
+FormDk->pnlQuality->Caption = s+"%";
 // фремя окончания фазы или пром. такта
 ss="";
 //s = STATE_PAR["LEVEL"];
